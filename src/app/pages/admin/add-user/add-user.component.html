@@ -1,0 +1,101 @@
+<!--<app-navbar></app-navbar>-->
+<router-outlet></router-outlet>
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+        <h1 class="text-center">Register Here</h1>
+        <!-- {{states|json}} -->
+
+        <form (ngSubmit)="formSubmit()">
+          <!--   User Name Field   -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input 
+            required
+            [(ngModel)]="user.username"
+            name="username"
+            matInput placeholder="Enter Mobile Number" 
+            minlength="10"
+            maxlength="10"
+            pattern="^[0-9]*$"
+            />
+            <mat-hint>Mobile number must be unique!!</mat-hint>
+          </mat-form-field>
+
+         
+          <!--   First Name Field   -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input
+            required
+            [(ngModel)]="user.firstName"
+            name="firstName"
+            matInput placeholder="Enter First Name" />
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+
+          <!--   Last Name Field   -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input 
+            required
+            [(ngModel)]="user.lastName"
+            name="lastName"
+            matInput placeholder="Enter Last Name" />
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+
+            <!-- Phone Number Field  
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input required [(ngModel)]="user.contact" name="contact" type="number" matInput placeholder="Enter Here" />
+             <mat-hint>Hint</mat-hint> 
+          </mat-form-field> 
+        -->
+
+
+           <!--   User Password Field   -->
+           <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Enter Password</mat-label>
+            <input required [(ngModel)]="user.password" name="password" [type]="hide ? 'password' : 'text'" matInput placeholder="Enter Password">
+            <button  type="button" name="pass" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+              <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+
+           <!--   Confirm Password Field   -->
+           <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input required [(ngModel)]="confirmPassword" name="cPassword" [type]="hide1 ? 'password' : 'text'" matInput placeholder="Enter Same Password">
+            <button  type="button" name="cpass" matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+              <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+              <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          
+
+             <!-- Zipcode Field  
+           <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Pincode</mat-label>
+            <input matInput
+            required
+            [(ngModel)]="address.pincode"
+            name="pincode"
+            type="number" matInput placeholder="Enter Here" />
+            <mat-hint align="end">{{pincode.value.length}}/6</mat-hint>
+          </mat-form-field> -->
+
+          <div class="container text-center">
+              <button type="submit" mat-raised-button color="primary">Register</button>
+              <button type="reset" class="ml10" mat-raised-button color="accent">Clear</button>
+            </div>
+        </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<app-footer></app-footer>-->

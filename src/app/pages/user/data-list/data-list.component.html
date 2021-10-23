@@ -1,0 +1,20 @@
+
+<mat-card>
+    <h1 class="text-center"> 
+       Crop Details
+        <span> 
+         <button routerLink="/user-dashboard/stepper" style="float: right;"  mat-raised-button>Add Crop</button> 
+        </span>
+    </h1>
+   
+    <ag-grid-angular
+        style="width: 1000px; height: 500px;"
+        class="ag-theme-alpine"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        [gridOptions]="gridOptions"
+        (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+    
+    </mat-card>

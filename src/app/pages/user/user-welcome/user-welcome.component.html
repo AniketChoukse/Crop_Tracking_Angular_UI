@@ -1,0 +1,66 @@
+<div class="col-md-6 offset-md-3">
+    <mat-card>
+    <h1 class="text-center">Enter Address</h1>
+     <form (ngSubmit)="addressFormSubmit()">
+      <!-- State Name Field   -->
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>State Name</mat-label>
+      <mat-select  [(ngModel)]="address.state"   name="state" placeholder="Enter State Name" (ngModelChange)="onChangeState($event)" >
+        
+      <mat-option  *ngFor="let state of states"  [value]="state"> {{state.stateName}}</mat-option>
+        
+    </mat-select>
+    </mat-form-field>
+
+     <!-- District Name Field   -->
+     <mat-form-field class="full-width" appearance="outline">
+        <mat-label>District Name</mat-label>
+        <mat-select [(ngModel)]="address.district"  name="district" placeholder="Enter District Name" (ngModelChange)="onChangeDistrict($event)">
+          
+        <mat-option  *ngFor="let district of districts"  [value]="district">{{district.districtName}} </mat-option>
+          
+      </mat-select>
+      </mat-form-field>
+
+       <!-- Tehsil Name Field   -->
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Tehsil Name</mat-label>
+        <mat-select  [(ngModel)]="address.tehsil" name="tehsil" placeholder="Enter Tehsil Name" (ngModelChange)="onChangeTehsil($event)">
+          
+        <mat-option  *ngFor="let tehsil of tehsils"  [value]="tehsil">{{tehsil.name}} </mat-option>
+          
+      </mat-select>
+      </mat-form-field>
+
+       <!-- Village Name Field   -->
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Village Name</mat-label>
+        <mat-select [(ngModel)]="address.village"  name="village" placeholder="Enter Village Name">
+          
+        <mat-option  *ngFor="let village of villages"  [value]="village">{{village.name}}</mat-option>
+          
+      </mat-select>
+      </mat-form-field>
+
+         <!-- Zipcode Field   -->
+       <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Pincode</mat-label>
+        <input matInput
+        required
+        [(ngModel)]="address.pincode"
+        name="pincode"
+        minlength="6"
+        maxlength="6"
+        pattern="^[0-9]*$"
+        type="number" matInput placeholder="Enter Here" />
+        <mat-hint align="end">
+            <!-- {{address.pincode.length}}/6 -->
+        </mat-hint>
+      </mat-form-field>
+
+      <div class="container text-center">
+          <button type="submit" mat-raised-button color="primary">Add</button>
+        </div>
+    </form>
+    </mat-card>
+  </div>

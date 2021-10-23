@@ -1,0 +1,56 @@
+<mat-card class="m">
+    <h1 class="name text-center"> <b>{{userbyAdmin.firstName}}  {{userbyAdmin.lastName}}</b></h1>
+    
+     <mat-card-content>
+         <div class="bootstrap-wrapper">
+             <div class="container">
+ 
+                 <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                     <table class="table text-center">
+                         <thead>
+                             <tr >
+                                 <th colspan="2" class="text-center">
+                                     <h3><b>Farmar Address Details</b></h3>
+                                 </th>
+                             </tr>
+                         </thead>
+                         <tr>
+                             <td >State Name</td>
+                             <td >{{address.stateName}}</td>
+                         </tr>
+                         <tr> 
+                             <td >district Name</td>
+                              <td>{{address.districtName}}</td>
+                         </tr>    
+                           <tr>
+                             <td >Tehsil Name</td>
+                             <td>{{address.tehsilName}}</td>
+                          </tr> 
+                            <tr>
+                             <td >Village Name</td>
+                             <td>{{address.villageName}}</td>
+                            </tr> 
+                            <tr> 
+                             <td >Pincode</td>
+                             <td>{{address.pincode}}</td>
+                         </tr>
+                     </table>
+                    </div> 
+                 </div>
+             </div>
+         </div>
+     </mat-card-content>
+ 
+    <h3 class="text-center"><b>Farmar Crop Details</b></h3>
+     <ag-grid-angular
+         style="width: 1000px; height: 500px;"
+         class="ag-theme-alpine"
+         [rowData]="rowData"
+         [columnDefs]="columnDefs"
+         [gridOptions]="gridOptions"
+         (gridReady)="onGridReady($event)"
+     >
+     </ag-grid-angular>
+     
+     </mat-card>

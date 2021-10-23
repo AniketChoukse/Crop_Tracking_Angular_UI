@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+    <a 
+    
+    mat-icon-button 
+    class="example-icon" aria-label="Example icon-button with menu icon">
+      <!-- <mat-icon>menu</mat-icon> -->
+    <span>Crop Tracking</span>
+    </a>
+    <span class="example-spacer"></span>
+    <a 
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/login'"
+    mat-icon-button 
+    class="example-icon favorite-icon mr20" 
+    aria-label="Example icon-button with heart icon">
+    Login  
+    <!-- <mat-icon>login</mat-icon> -->
+    </a>
+    <a
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/register'"
+    mat-icon-button 
+    class="example-icon favorite-icon mr20" 
+    aria-label="Example icon-button with heart icon">
+    Register  
+    <!-- <mat-icon>login</mat-icon> -->
+    </a>
+    <a
+    (click)="logout()"
+    *ngIf="isLoggedIn"
+    mat-icon-button 
+    class="example-icon favorite-icon mr20" 
+    aria-label="Example icon-button with heart icon">
+    Logout  
+    <!-- <mat-icon>login</mat-icon> -->
+    </a>
+
+    <a
+    *ngIf="isLoggedIn && user"
+    mat-icon-button 
+    class="example-icon favorite-icon mr50" 
+    mat-button
+    routerLink="/admin/profile"
+    aria-label="Example icon-button with heart icon">
+    {{ user.firstName }} {{ user.lastName }}  
+    <!-- <mat-icon>login</mat-icon> -->
+    </a>
+
+  </mat-toolbar>

@@ -1,0 +1,151 @@
+
+<ng-container [ngSwitch]="stepperOrientation | async">
+    <div *ngSwitchCase="'horizontal'"></div>
+    <div *ngSwitchCase="'vertical'"></div>
+  </ng-container>
+  
+  <form (ngSubmit)="formSubmit()">
+  <mat-stepper
+    class="stepper-class"
+    [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup" label="Enter Crop Details">
+      <div class="col-md-6 offset-md-3">
+      <form [formGroup]="firstFormGroup">
+        <mat-form-field  class="full-width" appearance="outline">
+            <mat-label > Crop Name </mat-label>
+            <input [(ngModel)]="cropDetail.cropName" matInput placeholder="Enter Crop Name" formControlName="firstCtrl" required
+            maxlength="50"
+            pattern="a-z || A-Z"
+            > 
+        </mat-form-field>
+        <mat-form-field  class="full-width" appearance="outline" >
+            <mat-label>Field Name</mat-label>
+            <input [(ngModel)]="cropDetail.fieldName" matInput placeholder="Enter Field Name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <mat-form-field  class="full-width" appearance="outline">
+            <mat-label>Crop Date </mat-label>
+            <input [(ngModel)]="cropDetail.cropDate" type="date" [max]="maxDate" 
+            matInput placeholder="Enter Pesticide Date" formControlName="firstCtrl" required>  
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+            <mat-datepicker #picker></mat-datepicker> -->
+
+            <!-- <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker> -->
+          </mat-form-field>
+        <mat-form-field  class="full-width" appearance="outline">
+            <mat-label>Area in acres</mat-label>
+            <input [(ngModel)]="cropDetail.area"
+            maxlength="10"
+            pattern="^[0-9]*$"
+            type="number"
+            matInput placeholder="Enter Area" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <mat-form-field  class="full-width" appearance="outline">
+            <mat-label>Seed Quantity in Kg</mat-label>
+            <input [(ngModel)]="cropDetail.seedQuantity"
+            maxlength="10"
+            pattern="^[0-9]*$"
+            type="number"
+            matInput placeholder="Enter Seed Quantity" formControlName="firstCtrl" required>
+        </mat-form-field>   
+        <div>
+          <button mat-raised-button color="primary"  matStepperNext>Next</button>
+        </div>
+      </form>
+    </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Enter Pesticide Details">
+      <div class="col-md-6 offset-md-3">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Pesticide Name</mat-label>
+            <input [(ngModel)]="cropDetail.pesticideName" matInput formControlName="secondCtrl" placeholder="Enter Pesticide Name"
+                   required>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Pesticide Brand</mat-label>
+              <input [(ngModel)]="cropDetail.pesticideBrand" matInput formControlName="secondCtrl" placeholder="Enter Pesticide Brand"
+                     required>
+            </mat-form-field><br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Pesticide Date</mat-label>
+                <input [(ngModel)]="cropDetail.pesticideDate"
+                [max]="maxDate"
+               
+                type="date" matInput placeholder="Enter Pesticide Date"  formControlName="secondCtrl" 
+                         required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Pesticide Quantity in Kg</mat-label>
+                  <input [(ngModel)]="cropDetail.pesticideQuantity" matInput formControlName="secondCtrl" placeholder="Enter Pesticide Quantity"
+                  maxlength="10"
+                  pattern="^[0-9]*$"
+                  type="number"       
+                  required>
+            </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button class="ml10" color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </div>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Enter Micronutrient Details">
+      <div class="col-md-6 offset-md-3">
+      <form [formGroup]="thirdFormGroup">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Micronutient Name</mat-label>
+            <input [(ngModel)]="cropDetail.microName" matInput formControlName="thirdCtrl" placeholder="Enter Micronutrient Name" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Pesticide Brand</mat-label>
+              <input [(ngModel)]="cropDetail.microBrand" matInput formControlName="thirdCtrl" placeholder="Enter Pesticide Brand"
+                     required>
+            </mat-form-field><br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Micronutrient Date</mat-label>
+                <input [(ngModel)]="cropDetail.microDate"
+                type="date" matInput placeholder="Enter Micronutrient Date"  formControlName="thirdCtrl"
+                         required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Micronutient Quantity in Kg</mat-label>
+                <input [(ngModel)]="cropDetail.microQuantity" matInput formControlName="thirdCtrl" placeholder="Enter Micronutrient Quantity"
+                maxlength="10"
+                pattern="^[0-9]*$"
+                type="number"       
+                required>
+            </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          <button mat-raised-button class="ml10" color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+      </div>
+    </mat-step>
+    <mat-step>
+      <div class="col-md-6 offset-md-3">
+      <ng-template matStepLabel>Done</ng-template>
+      <form [formGroup]="fourthFormGroup">
+        <mat-form-field  class="full-width" appearance="outline">
+            <mat-label > Output in Quintal</mat-label>
+            <input 
+            maxlength="10"
+            pattern="^[0-9]*$"
+            type="number"
+            [(ngModel)]="cropDetail.output" matInput placeholder="Enter Output" formControlName="fourthCtrl" required> 
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+        </div>
+    </form>
+    </div>
+    <div class="text-center">
+    <button mat-raised-button  color="warn" type="submit">Submit</button>
+    </div>
+    </mat-step>
+
+  </mat-stepper>
+  </form>
+  

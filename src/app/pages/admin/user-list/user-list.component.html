@@ -1,0 +1,12 @@
+<mat-card>
+    <!-- <button routerLink="/admin/adduser" class="ad"  mat-raised-button color="primary">AddUser</button> -->
+    <ag-grid-angular
+    style="width: 1000px; height: 500px;"
+    class="ag-theme-alpine"
+    [gridOptions]="gridOptions"
+    (gridReady)="onGridReady($event)"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+>
+</ag-grid-angular>
+</mat-card>
